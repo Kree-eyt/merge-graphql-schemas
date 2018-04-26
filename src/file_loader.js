@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import isGlob from 'is-glob';
 import Glob from 'glob';
+import flowParser from 'flow-parser';
 
 const recursiveReadDirSync = dir =>
   fs.readdirSync(dir)
@@ -58,7 +59,7 @@ const fileLoader = (folderPath,
             case '.ts':
             case '.js': {
               console.log(f);
-              const file = require(f); // eslint-disable-line
+              const file = flowParser(require(f)); // eslint-disable-line
               console.log(file);
               returnVal = file.default || file;
               break;
