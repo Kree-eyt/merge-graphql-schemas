@@ -36,6 +36,7 @@
     "flow-remove-types": "^1.2.3",
     "glob": "^7.1.2",
     "is-glob": "^4.0.0",
+    "require-from-string": "^2.0.2",
     "temp-write": "^3.4.0"
   },
   "peerDependencies": {
