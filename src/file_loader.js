@@ -3,6 +3,7 @@ import path from 'path';
 import isGlob from 'is-glob';
 import Glob from 'glob';
 import flowRemoveTypes from 'flow-remove-types';
+import tempWrite from 'temp-write';
 
 const recursiveReadDirSync = dir =>
   fs.readdirSync(dir)
@@ -58,12 +59,11 @@ const fileLoader = (folderPath,
           switch (pathObj.ext) {
             case '.ts':
             case '.js': {
-              console.log(f);
               // const file = require(f); // eslint-disable-line
               const input = fs.readFileSync(f, 'utf8');
-              const file = flowRemoveTypes(input);
-              returnVal = file.toString();
-              // returnVal = file.default || file;
+              const output = flowRemoveTypes(input);
+              const file = require(tempWrite.sync(output.toString()));
+              returnVal = file.default || file;
               break;
             }
 
