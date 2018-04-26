@@ -58,6 +58,7 @@ const fileLoader = (folderPath,
             case '.ts':
             case '.js': {
               const file = require(f); // eslint-disable-line
+              console.log(file);
               returnVal = file.default || file;
               break;
             }
