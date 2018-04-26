@@ -62,7 +62,7 @@ const fileLoader = (folderPath,
               // const file = require(f); // eslint-disable-line
               const input = fs.readFileSync(f, 'utf8');
               const file = flowRemoveTypes(input);
-              returnVal = file;
+              returnVal = file.toString();
               // returnVal = file.default || file;
               break;
             }
