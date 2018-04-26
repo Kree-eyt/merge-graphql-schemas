@@ -59,10 +59,11 @@ const fileLoader = (folderPath,
             case '.ts':
             case '.js': {
               console.log(f);
-              let file = require(f); // eslint-disable-line
-              file = flowRemoveTypes(file);
-              console.log(file);
-              returnVal = file.default || file;
+              // const file = require(f); // eslint-disable-line
+              const input = fs.readFileSync('input.js', 'utf8');
+              const file = flowRemoveTypes(input);
+              returnVal = file;
+              // returnVal = file.default || file;
               break;
             }
 
