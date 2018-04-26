@@ -60,7 +60,7 @@ const fileLoader = (folderPath,
             case '.js': {
               console.log(f);
               // const file = require(f); // eslint-disable-line
-              const input = fs.readFileSync('input.js', 'utf8');
+              const input = fs.readFileSync(f, 'utf8');
               const file = flowRemoveTypes(input);
               returnVal = file;
               // returnVal = file.default || file;
